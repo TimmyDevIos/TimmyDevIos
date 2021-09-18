@@ -8,11 +8,7 @@ import Carousel from '../component/Carousel/Carousel';
 import { dummyData } from '../data/data';
 
 import SuggestedComponent from '../component/SuggestedComponent';
-import BlogComponent from '../component/BlogComponent';
-
-
-const img_Delivery = require('../assets/Delivery2.png');
-const img_Pickup = require('../assets/Pickup2.png');
+import BlogComponent from '../component/blog/BlogComponent';
 
 const HomeBodyComponent = () => {
   return (
@@ -33,11 +29,6 @@ const styles = StyleSheet.create({
 
 
   suggestedContainer:{},
-
-
-
-
-
 
 });
 

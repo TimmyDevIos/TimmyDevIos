@@ -65,6 +65,7 @@ export default function App() {
           component={StoreScreen}
           options={{
             tabBarLabel: 'Cửa hàng',
+            headerShown: false,// ẩn hearder tabbar
           }}
         />
         <Tab.Screen
