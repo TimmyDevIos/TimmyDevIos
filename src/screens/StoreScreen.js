@@ -7,27 +7,27 @@ import {
   StatusBar,
   ScrollView,
   Button,
-  Alert
+  Alert,
 } from 'react-native';
 
-import {
-  NavigationContainer,
-} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import HeaderStoreComponent from '../component/store/HeaderStoreComponent';
-import MapStoreComponent from '../component/store/MapStoreComponent';
-import ListStoreComponent from '../component/store/ListStoreComponent';
-
 const Stack = createNativeStackNavigator();
-const StoreScreen = ({navigation}) => {
+
+import HeaderStoreComponent from '../component/store/HeaderStoreComponent';
+import ListStoreComponent from '../component/store/ListStoreComponent';
+import MapStoreComponent from '../component/store/MapStoreComponent';
+
+const StoreScreen = ({navigation, route}) => {
+    const [isListStore, setIsListStore] = React.useState(true)
   return (
     <SafeAreaView style={styles.screenContainer}>
-      <HeaderStoreComponent navigation={navigation} />
-      <Stack.Navigator>
+      
+      <HeaderStoreComponent navigation={navigation} isListStore={isListStore} setIsListStore={setIsListStore}  />
+      <Stack.Navigator initialRouteName="initialRouteName">
         <Stack.Screen
           name="ListStoreComponent"
           component={ListStoreComponent}
@@ -50,7 +50,7 @@ const StoreScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: '#fefefe',
+    backgroundColor: '#fdf7e7',
   },
 });
 

@@ -15,11 +15,12 @@ import {
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+
 const MapStoreComponent = ({navigation}) => {
   return (
-      <View>
-        <Text> Map Store </Text>
-      </View>
+    <>
+    <Text> Map </Text>
+    </>
   );
 };
 
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     borderBottomColor: '#efefef',
     borderBottomWidth: 1,
+    backgroundColor: '#fefefe',
   },
 });
 

@@ -17,9 +17,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const ListStoreComponent = ({navigation}) => {
   return (
-      <View>
-        <Text> List Store </Text>
-      </View>
+    <>
+    <Text> List </Text>
+    </>
   );
 };
 
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     borderBottomColor: '#efefef',
     borderBottomWidth: 1,
+    backgroundColor: '#fefefe',
   },
 });
 

@@ -16,71 +16,56 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import SayHiComponent from '../SayHiComponent';
-import IconHeaderComponent from '../IconHeaderComponent';
+import IconHeaderComponent from '../IconHeaderComponent'; 
 
-
-
-
-
-const BandoComponent = ({navigation}) => {
+const MapComponent = ({navigation}) => {
   return (
     <TouchableOpacity
       style={styles.btnContainer}
-      onPress={() => navigation.navigate('MapStoreComponent')}>
-      <FontAwesome name="map-o" style={styles.iconSearch} />
-      <Text style={styles.txtIcon}>Bản Đồ</Text>
-    </TouchableOpacity>
-  );
-};
-
-const ListComponent = ({navigation}) => {
-  return (
-    <TouchableOpacity
-      style={styles.btnContainer}
-      onPress={() => navigation.navigate('ListStoreComponent')}>
+      onPress={() => navigation.replace('ListStoreComponent')}>
       <FontAwesome name="list" style={styles.iconSearch} />
       <Text style={styles.txtIcon}>Danh sách</Text>
     </TouchableOpacity>
   );
 };
 
-const ListComponent2 = ({navigation}) => {
-  return (
-    <View>
-    <TouchableOpacity
-      style={styles.btnContainer}
-      onPress={() => navigation.navigate('MapStoreComponent')}>
-      <FontAwesome name="map-o" style={styles.iconSearch} />
-      <Text style={styles.txtIcon}>Bản Đồ</Text>
-    </TouchableOpacity>
 
+const RenderBanDo = ({navigation, isListStore, setIsListStore}) => {
+  if(isListStore == true){
+    return (
     <TouchableOpacity
       style={styles.btnContainer}
-      onPress={() => navigation.navigate('ListStoreComponent')}>
+      onPress={() => 
+      {navigation.navigate('MapStoreComponent'),
+        setIsListStore(false)
+      }
+      }>
       <FontAwesome name="map-o" style={styles.iconSearch} />
-      <Text style={styles.txtIcon}>List</Text>
+      <Text style={styles.txtIcon}>Bản đồ</Text>
     </TouchableOpacity>
-    </View>
   );
+  }
+  else
+  {
+    return (
+    <TouchableOpacity
+      style={styles.btnContainer}
+      onPress={() => 
+      {navigation.navigate('ListStoreComponent'),
+        setIsListStore(true)
+      }
+      }>
+      <FontAwesome name="list" style={styles.iconSearch} />
+      <Text style={styles.txtIcon}>Danh Sách</Text>
+    </TouchableOpacity>
+  );
+  }
 };
 
-const RenderBanDo = ({navigation}) => {
-  const [count, setCount] = useState(0);
+const HeaderStoreComponent = ({navigation, isListStore, setIsListStore}) => {
   return (
-    <BandoComponent navigation={navigation} />
-  )
-};
-
-
-
-
-
-
-const HeaderComponent = ({navigation}) => {
-  return (
-    <View>
-      <StatusBar translucent barStyle="dark-content" />
       <View style={styles.headerContainer}>
+      <StatusBar translucent barStyle="dark-content" />
         <View style={styles.titleContainer}>
           <Text style={styles.txt_Title}>Cửa Hàng</Text>
           <IconHeaderComponent />
@@ -95,12 +80,12 @@ const HeaderComponent = ({navigation}) => {
               selectionColor="#FB8E18"
             />
           </View>
-          <RenderBanDo navigation={navigation} />
+          <RenderBanDo navigation={navigation} isListStore={isListStore} setIsListStore={setIsListStore}  />
         </View>
       </View>
-    </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   headerContainer: {
@@ -108,6 +93,7 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     borderBottomColor: '#efefef',
     borderBottomWidth: 1,
+    backgroundColor: "#fefefe",
   },
 
   titleContainer: {
@@ -166,4 +152,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HeaderComponent;
+export default HeaderStoreComponent;
